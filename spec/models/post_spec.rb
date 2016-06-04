@@ -1,5 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Post do
+  describe "creation" do
+    context "with invalid attributes" do
+      it "should not be valid" do
+        @post = Post.new(title: "", description: "", author: "", category: "")
+        expect(@post.save).to be false
+      end
+      
+       it "should not be valid with short title" do
+        @post = build(:post, category: "H")
+        expect(@post.save).to be false
+      end
+      
+    end
+    
+   
+  end
 end
