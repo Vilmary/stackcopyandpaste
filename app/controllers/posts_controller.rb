@@ -4,7 +4,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order('created_at desc').limit(10)
   end
 
   # GET /posts/1
