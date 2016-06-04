@@ -22,7 +22,17 @@ RSpec.describe User, type: :model do
         
         expect(@user2.save).to be false
       end
-
+      
+      
+       it "Email Unico" do
+        @user = build(:user)
+        @user.save
+        @user2=build(:user, email: @user.email)
+        
+        expect(@user2.save).to be false
+      end
+      
+      
     end
 
     context "with valid attributes" do
