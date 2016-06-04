@@ -3,3 +3,13 @@
 <% @posts.each do |post| %>
   <%= render 'post', post: post %>
 <% end %>
+
+<% @category.each do |category| %>
+<p>
+<%= 
+    link_to category.category, posts_path(category: category.category) 
+    %>
+</p>
+<% end %>
+
+

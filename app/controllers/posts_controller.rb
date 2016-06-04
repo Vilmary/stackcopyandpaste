@@ -4,7 +4,13 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order('created_at desc').limit(10)
+    @category = Post.select(:category).distinct
+    
+    if !params[:category] 
+      @posts = Post.order('created_at desc').limit(10)
+    else
+      @posts = Post.where(category: params[:category]).order('created_at desc').limit(10)
+    end
   end
 
   # GET /posts/1
