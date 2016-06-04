@@ -27,7 +27,12 @@
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit nil, class: "button" %>
+  <% if @post %>
+    <%= link_to 'Back', @post, class: "button secondary right" %>
+  <% else %>
+    <%= link_to 'Back', posts_path, class: "button secondary right" %>
+  <% end %>
+</div>
 <% end %>
